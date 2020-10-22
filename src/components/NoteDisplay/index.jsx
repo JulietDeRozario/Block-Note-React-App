@@ -1,10 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import MardownInput from '../MarkdownInput';
 import Showdown from "showdown";
 
-const NoteDisplay = () => {
-  const [note, setNote] = useState("");
-  const [title, setTitle] = useState("");
+const NoteDisplay = ({noteContent, noteTitle}) => {
+  const [note, setNote] = useState(noteContent);
+  const [title, setTitle] = useState(noteTitle);
+  
+  if(noteContent != undefined && noteTitle != undefined && note != noteContent && title != noteTitle) {
+    setNote(noteContent);
+    setTitle(noteTitle);
+  } 
 
   const displayNote = (title, note) => {
     const converter = new Showdown.Converter();
@@ -20,7 +25,7 @@ const NoteDisplay = () => {
     <div>
       <h1 className="title" dangerouslySetInnerHTML={createMarkup(title)} />
       <div dangerouslySetInnerHTML={createMarkup(note)} />
-      <MardownInput displayNote={displayNote}/>
+      <MardownInput displayNote={displayNote} noteTitle={noteTitle} noteContent={noteContent}/>
     </div>
   )
 }

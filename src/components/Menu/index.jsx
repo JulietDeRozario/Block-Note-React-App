@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
+import NoteDisplay from '../NoteDisplay';
 import Note from '../Note';
 
 const Menu = () => {
   const [notes, setNotes] = useState([])
+  const [noteSelected, setNoteSelected] = useState([]);
 
   const showNotes = () => {
     let notes = [];
@@ -15,11 +17,16 @@ const Menu = () => {
   useEffect(() => {
     showNotes();
   }, []);
+
+  const editNote = (content, title) => {
+    setNoteSelected([content, title]);
+  }
   
   return (
     <div>
+      <NoteDisplay noteContent={noteSelected[0]} noteTitle={noteSelected[1]}/>
       {notes.map((note) => (
-        <Note title={note[0]} content={note[1]}/>
+        <Note title={note[0]} content={note[1]} editNote={editNote}/>
       ))}
     </div>
   )

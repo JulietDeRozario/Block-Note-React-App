@@ -1,10 +1,22 @@
 import React from 'react';
+import Showdown from "showdown";
 
-const Note = ({title, content}) => {
+const Note = ({title, content, editNote}) => {
+
+  const createMarkup = (markdown) => {
+    const converter = new Showdown.Converter();
+    let html = converter.makeHtml(markdown);
+    return {__html: html};
+  }
+
+  const displayNote = () => {
+    editNote(content, title)
+  }
+
   return (
-    <div>
+    <div onClick={displayNote}>
       <h1>{title}</h1>
-      <p>{content}</p>
+      <p dangerouslySetInnerHTML={createMarkup(content)} />
     </div>
   )
 }
