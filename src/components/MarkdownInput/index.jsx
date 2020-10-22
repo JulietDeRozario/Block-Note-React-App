@@ -4,8 +4,6 @@ const MarkdownInput = ({displayNote}) => {
   const [content, setContent] = useState('');
   const [title, setTitle] = useState('');
 
-  //const [searchQuery, setSearchQuery] = useState('');
-
   const handleChange = (event) => {
     if(event.target.id === "content") {
       setContent(event.target.value);
@@ -17,7 +15,8 @@ const MarkdownInput = ({displayNote}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //setSearchQuery(query);
+    localStorage[title] = content;
+    window.location.reload();
   };
 
   return (
