@@ -14,8 +14,8 @@ const Note = ({title, content, editNote}) => {
   }
 
   return (
-    <div onClick={displayNote}>
-      <h1>{title}</h1>
+    <div className="card" onClick={displayNote}>
+      <h1 className="card-title">{title}</h1>
       <p dangerouslySetInnerHTML={createMarkup(content)} />
     </div>
   )

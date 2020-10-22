@@ -28,7 +28,7 @@ const MarkdownInput = ({displayNote, noteTitle, noteContent}) => {
   return (
     <form onSubmit={handleSubmit}>
       <input type="text" id="title" placeholder="Titre de la note" value={title} onChange={handleChange}/>
-      <input type="textarea" id="content" placeholder="Saisissez votre note ici" value={content} onChange={handleChange}/>
+      <textarea className="textarea" type="text" id="content" placeholder="Saisissez votre note ici" value={content} onChange={handleChange}/>
       <button type="submit">
         Sauvegarder
       </button>

@@ -23,11 +23,15 @@ const Menu = () => {
   }
   
   return (
-    <div>
-      <NoteDisplay noteContent={noteSelected[0]} noteTitle={noteSelected[1]}/>
-      {notes.map((note) => (
-        <Note title={note[0]} content={note[1]} editNote={editNote}/>
-      ))}
+    <div className="container">
+      <div id="menu">
+        {notes.map((note) => (
+          <Note title={note[0]} content={note[1]} editNote={editNote}/>
+        ))}
+      </div>
+      <div id="current-note">
+        <NoteDisplay noteContent={noteSelected[0]} noteTitle={noteSelected[1]}/>
+      </div>
     </div>
   )
 }
